@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS jobs (
+  id TEXT PRIMARY KEY,
+  status TEXT NOT NULL,
+  payload TEXT NOT NULL,
+  result TEXT,
+  error TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS facebook_snapshots (
+  id TEXT PRIMARY KEY,
+  job_id TEXT,
+  leads NUMERIC NOT NULL DEFAULT 0,
+  spend NUMERIC NOT NULL DEFAULT 0,
+  note TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS app_meta (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL
+);
